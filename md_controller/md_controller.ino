@@ -22,12 +22,12 @@
 
 void setup() {
   // 74LS595
-  pinMode(rclk, OUTPUT);
-  pinMode(srclk, OUTPUT);
-  pinMode(ser, OUTPUT);
-  pinMode(srclrb, OUTPUT);
+  pinMode(RCLK, OUTPUT);
+  pinMode(SRCLK, OUTPUT);
+  pinMode(SER, OUTPUT);
+  pinMode(SRCLRB, OUTPUT);
   // Setup clear status
-  digitalWrite(srclrb, HIGH);
+  digitalWrite(SRCLRB, HIGH);
 
   // MotorDriver1
 
@@ -36,9 +36,9 @@ void setup() {
 
 // Send directions trought 74LS595
 void send(int directions) {
-  digitalWrite(rclk, LOW);
-  shiftOut(ser, srclk, MSBFIRST, directions);
-  digitalWrite(rclk, HIGH);
+  digitalWrite(RCLK, LOW);
+  shiftOut(SER, SRCLK, MSBFIRST, directions);
+  digitalWrite(RCLK, HIGH);
   delay(500);
 }
 
