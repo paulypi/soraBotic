@@ -1,10 +1,20 @@
+// Define directions in decimal 4 mechanum wheels
+#define N 170
+#define NE 130
+#define E 150
+#define SE 20
+#define S 85
+#define SO 65
+#define O 105
+#define NO 40
+#define ROTR 153
+#define ROTL 102
 
 // Connection to 74LS595
-const int ser = 2;
-const int srclk = 3;
-const int rclk = 4;
-// Set emergency clear pin
-const int srclrb = 9;
+#define SER 2
+#define SRCLK 3
+#define RCLK 4
+#define SRCLRB 9  // Set emergency clear pin
 
 // Connection to MotorDriver1
 
@@ -33,8 +43,15 @@ void send(int directions) {
 }
 
 void loop() {
-  send(4);
-  delay(2000);
-  send(15);
-  delay(2000);
+  send(N);
+  delay(5000);
+
+  send(S);
+  delay(5000);
+
+  send(E);
+  delay(5000);
+
+  send(O);
+  delay(5000);
 }
