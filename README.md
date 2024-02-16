@@ -4,7 +4,8 @@
 
 # Direction conversion
 
-Every motor have 2 directions and a full breakes position and need 2 inputs to select the direction, so we can translate it into a 2 bits value.
+Every motor have 2 directions and a full breakes position.
+Need 2 inputs to select the direction or a 2 bits value.
 
 Legend | direction
 ------ | ---------
@@ -12,8 +13,8 @@ Legend | direction
 01 | BKW
 00 | Stop
 
-In order to set the directions of 4 motors we can work with a 1 byte value (8-bit).
-If we take into account the use of 4 mechanum wheels, 10 directions are possible.
+In order to set the directions of 4 motors we can work with 1 byte value (8-bit).
+If we take into account the use of 4 mechanum wheels, 10 directions are possible with a break position.
 
 Direction | M1M2 M3M4 | Decimal
 --------- | --------- | -------
@@ -27,4 +28,4 @@ O | 0110 1001 | 105
 NO | 0010 1000 | 40
 ROT R | 1001 1001 | 153
 ROT L | 0110 0110 | 102
-
+STOP  | 0000 0000 | 0
