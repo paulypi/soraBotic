@@ -31,7 +31,7 @@ void setup() {
   pinMode(SER, OUTPUT);
   pinMode(SRCLRB, OUTPUT);
   // Clear output
-  //digitalWrite(SRCLRB, HIGH);
+  digitalWrite(SRCLRB, HIGH);
 
   // MotorDriver1
   pinMode(ENA1, OUTPUT);
@@ -64,7 +64,6 @@ void loop() {
 
 // Send directions trought 74HC595
 void direct(int directions) {
-  digitalWrite(SRCLRB, HIGH);
   digitalWrite(RCLK, LOW);
   shiftOut(SER, SRCLK, MSBFIRST, directions);
   digitalWrite(RCLK, HIGH);
@@ -89,6 +88,9 @@ void fullSpeed() {
 void fullBrakes() {
   int brakes[4] = {0, 0, 0, 0};
   digitalWrite(SRCLRB, LOW);    // Clear register output
+  digitalWrite(RCLK, HIGH);
+  digitalWrite(RCLK, LOW);
+  digitalWrite(SRCLRB, HIGH);
   speed(brakes);
   delay(500);
 }
