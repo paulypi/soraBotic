@@ -9,12 +9,12 @@
 #define NO 40
 #define ROTR 153
 #define ROTL 102
+#define STOP 0
 
 // Connection to 74HC595
 #define SER 2
 #define SRCLK 4
 #define RCLK 7
-#define SRCLRB 8
 
 // Connection to MotorDriver1
 #define ENA1 3
@@ -29,9 +29,6 @@ void setup() {
   pinMode(RCLK, OUTPUT);
   pinMode(SRCLK, OUTPUT);
   pinMode(SER, OUTPUT);
-  pinMode(SRCLRB, OUTPUT);
-  // Clear output
-  digitalWrite(SRCLRB, HIGH);
 
   // MotorDriver1
   pinMode(ENA1, OUTPUT);
@@ -51,15 +48,17 @@ void loop() {
 
   direct(N);
   speed(speeds);
-  delay(3000);
+  delay(2000);
 
   fullBrakes();
-  delay(3000);  
-  
+  delay(2000);
+
   direct(S);
-  delay(3000);
+  speed(speeds);
+  delay(2000);
 
   fullBrakes();
+  delay(2000);
 }
 
 // Send directions trought 74HC595
@@ -71,11 +70,12 @@ void direct(int directions) {
 }
 
 // Send speeds
-void speed(int speeds[3]) {
+void speed(int speeds[4]) {
   analogWrite(ENA1, speeds[0]);
   analogWrite(ENB1, speeds[1]);
   analogWrite(ENA2, speeds[2]);
   analogWrite(ENB2, speeds[3]);
+  delay(500);
 }
 
 void fullSpeed() {
@@ -83,14 +83,12 @@ void fullSpeed() {
   digitalWrite(ENB1, HIGH);
   digitalWrite(ENA2, HIGH);
   digitalWrite(ENB2, HIGH);
+  delay(500);
 }
 
 void fullBrakes() {
   int brakes[4] = {0, 0, 0, 0};
-  digitalWrite(SRCLRB, LOW);    // Clear register output
-  digitalWrite(RCLK, HIGH);
-  digitalWrite(RCLK, LOW);
-  digitalWrite(SRCLRB, HIGH);
+  direct(STOP);
   speed(brakes);
   delay(500);
 }
