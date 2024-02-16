@@ -1,4 +1,19 @@
+# Hardwere
+1. Arduino Nano Every
+2. 74LS595 8-bit shift register SIPO (Serial In Parallel Out)
+
 # Direction conversion
+
+Every motor have 2 directions and a full breakes position and need 2 inputs to select the direction, so we can translate it into a 2 bits value.
+
+Legend | direction
+------ | ---------
+10 | FWD
+01 | BKW
+00 | Stop
+
+In order to set the directions of 4 motors we can work with a 1 byte value (8-bit).
+If we take into account the use of 4 mechanum wheels, 10 directions are possible.
 
 Direction | M1M2 M3M4 | Decimal
 --------- | --------- | -------
