@@ -1,6 +1,6 @@
 # Hardwere
 1. Arduino Nano Every
-2. 74LS595 8-bit shift register SIPO (Serial In Parallel Out)
+2. 74HC595 8-bit shift register SIPO (Serial In Parallel Out)
 
 # Direction conversion
 
